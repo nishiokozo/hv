@@ -1,21 +1,56 @@
-OBJS   = sys.o vec.o mouse.o gl.o gra.o file.o env.o win.o joystick.o glfilter.o glbitmap.o glfont.o bmp.o key.o texture.o sound.o gdi.o gram.o
+TAR = sys.a
 
+OBJS = \
+	obj/sys.o \
+	obj/vec.o \
+	obj/mouse.o \
+	obj/gl.o \
+	obj/gra.o \
+	obj/file.o \
+	obj/env.o \
+	obj/win.o \
+	obj/joystick.o \
+	obj/glfilter.o \
+	obj/glbitmap.o \
+	obj/glfont.o \
+	obj/bmp.o \
+	obj/key.o \
+	obj/texture.o \
+	obj/sound.o \
+	obj/gdi.o \
+	obj/gram.o \
 
-#CFLAGS   = -g -Wall -Werror -Wno-unused-variable -Wno-unused-but-set-variable -Wno-format -Wno-unused-value -Wno-unused-label 
-#CFLAGS   = -g -Wall -Werror -Wno-unused-function -Wno-unused-variable -Wno-sign-compare -Wno-unused-but-set-variable -Wno-format
-CFLAGS   = -g -Wall -Werror -Wno-unused-function -Wno-unused-variable -Wno-sign-compare -Wno-unused-but-set-variable -Wno-format
-LDFLAGS  = 
-LDLIBS   =    
+FLGS   = \
+	-c \
+	-g \
+	-Wall \
+	-Werror \
+	-Wno-unused-function \
+	-Wno-unused-variable \
+	-Wno-sign-compare \
+	-Wno-unused-but-set-variable \
+	-Wno-format \
 
+INCS = \
+	 -I. \
+	 -Ic:/msys64 \
 
-sys.a: $(OBJS)
+#CC	= clang++
+CC	= g++
+
+all:obj $(TAR)
+#
+
+$(TAR): $(OBJS)
 	ar r $@ $^ 
 
+obj/%.o:%.cpp
+	$(CC)   $< -o $@ $(FLGS) $(INCS)
 
-.cpp.o:
-	g++ -c -o $@ $^ $(CFLAGS) -I.  -Ic:/msys64
+obj:
+	mkdir obj
 
 clean:
-	rm -f *.o *.out *.exe $(TARGET)
+	rm -rf $(TAR) obj
 
 	
