@@ -74,7 +74,7 @@ int&	sp = SP;
 
 #if 0
 unsigned	char	A,B,C,D,E,H,L;
-unsigned	char	_A,_B,_C,_D,_E,_H,_L;
+unsigned	char	_A,_B_,_C_,_D,_E,_H,_L_;
 unsigned	char	XH,XL;
 unsigned	char	YH,YL;
 #else
@@ -155,8 +155,8 @@ FLAG&	 		 _F = *((FLAG*)&reg[_AFH]);
 //unsigned char&	 _F = reg[_AFL];
 unsigned short&  _AF = ((unsigned short*)reg)[_AFL];
 
-unsigned char&	 _B = reg[_BCH];
-unsigned char&	 _C = reg[_BCL];
+unsigned char&	 _B_ = reg[_BCH];
+unsigned char&	 _C_ = reg[_BCL];
 unsigned short&  _BC = ((unsigned short*)reg)[_BCL];
 
 unsigned char&	 _D = reg[_DEH];
@@ -164,7 +164,7 @@ unsigned char&	 _E = reg[_DEL];
 unsigned short&  _DE = ((unsigned short*)reg)[_DEL];
 
 unsigned char&	 _H = reg[_HLH];
-unsigned char&	 _L = reg[_HLL];
+unsigned char&	 _L_ = reg[_HLL];
 unsigned short&  _HL = ((unsigned short*)reg)[_HLL];
 
 #endif
@@ -256,7 +256,7 @@ void	InitX1()
 	}
 
 	A=B=C=D=E=H=L = 0;
-	_A=_B=_C=_D=_E=_H=_L = 0;
+	_A=_B_=_C_=_D=_E=_H=_L_ = 0;
 	XH=XL = 0;
 	YH=YL = 0;
 
@@ -2736,7 +2736,7 @@ p(" CCB8");                    ;_a=a                   ;                        
 p("     ");RMCCB9:                             //RMCCB9:
 p(" CCB9");                    ;BC = 0x3000             ;                                  ;/*cl+=10*/;                             //      LD      BC,3000h
 p(" CCBC");                    ;IX = 0xB600             ;                                  ;/*cl+=14*/;                             //      LD      IX,B600h
-p(" CCC0");a=B;B=_B;_B=a; a=C;C=_C;_C=a; a=D;D=_D;_D=a; a=E;E=_E;_E=a; a=H;H=_H;_H=a; a=L;L=_L;_L=a;/*cl+= 4*/;                             //      EXX
+p(" CCC0");a=B;B=_B_;_B_=a; a=C;C=_C_;_C_=a; a=D;D=_D;_D=a; a=E;E=_E;_E=a; a=H;H=_H;_H=a; a=L;L=_L_;_L_=a;/*cl+= 4*/;                             //      EXX
 p(" CCC1");                    ;C = RMB600[0];B = RMB600[1]   ;                                  ;/*cl+=20*/;                             //      LD      BC,(RMB600)
 p("     ");RMCCC5:                             //RMCCC5:
 p(" CCC5");                    ;A = RMB611[0]             ;                                  ;/*cl+=13*/;                             //      LD      A,(RMB611)
@@ -2786,7 +2786,7 @@ p(" CD06");                    ;C = MEM[IX+0x00]      ;                         
 p("     ");RMCD09:                             //RMCD09:
 p(" CD09");a = IO[BC]          ;A = a                 ;F.Z=((a&0xff)==0)  ;              ;/*cl+=12*/;                             //      !IN      A,(C)
 p(" CD0B");a = C + 1           ;C = a                 ;F.Z=((a&0xff)==0)  ;              ;/*cl+= 4*/;                             //      INC     C
-p(" CD0C");a=B;B=_B;_B=a; a=C;C=_C;_C=a; a=D;D=_D;_D=a; a=E;E=_E;_E=a; a=H;H=_H;_H=a; a=L;L=_L;_L=a;/*cl+= 4*/;                             //      EXX
+p(" CD0C");a=B;B=_B_;_B_=a; a=C;C=_C_;_C_=a; a=D;D=_D;_D=a; a=E;E=_E;_E=a; a=H;H=_H;_H=a; a=L;L=_L_;_L_=a;/*cl+= 4*/;                             //      EXX
 p(" CD0D");                    ;IO[BC] = A            ;                                  ;/*cl+=12*/;                             //      !OUT     (C),A
 p("     ");g_text[y][x] =A;                             ////c:g_text[y][x] =A;
 p("     ");x++;                             ////c:x++;
@@ -2795,7 +2795,7 @@ p("     ");	x = 0;                             ////c:	x = 0;
 p("     ");	y++;                             ////c:	y++;
 p("     ");}                             ////c:}
 p(" CD0F");                    ;BC++                  ;                                  ;/*cl+= 6*/;                             //      INC     BC
-p(" CD10");a=B;B=_B;_B=a; a=C;C=_C;_C=a; a=D;D=_D;_D=a; a=E;E=_E;_E=a; a=H;H=_H;_H=a; a=L;L=_L;_L=a;/*cl+= 4*/;                             //      EXX
+p(" CD10");a=B;B=_B_;_B_=a; a=C;C=_C_;_C_=a; a=D;D=_D;_D=a; a=E;E=_E;_E=a; a=H;H=_H;_H=a; a=L;L=_L_;_L_=a;/*cl+= 4*/;                             //      EXX
 p(" CD11");a = D - 1           ;D = a                 ;F.Z=((a&0xff)==0)  ;              ;/*cl+= 4*/;                             //      DEC     D
 p(" CD12");                    ;if ( !F.Z ) {cl+=12;goto RMCD09;}else{cl+= 7;}               ;                                   //      JR      NZ,RMCD09
 p(" CD14");a = B + 1           ;B = a                 ;F.Z=((a&0xff)==0)  ;              ;/*cl+= 4*/;                             //      INC     B

@@ -5,7 +5,9 @@ using namespace std;
 #include <math.h>
 #include <ctype.h>
 #include <windows.h>
+#undef APIENTRY
 #include <GL/glew.h>
+#undef GLEWAPI
 #include <GL/wglew.h>
 
 #include "mouse.h"
