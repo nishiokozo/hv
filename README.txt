@@ -18,6 +18,8 @@ Hero of X1, Mr.GEPPI, was published in the July issue I/O '84 8, Windows is the 
 This licence is "GEPPI ware".
 You do not need permit to use, but if you have informations of Mr.GEPPI, you shall report to me.
 
+⇒ｹﾞｯﾋﾟさん本人から連絡がいただけました。情報いただいた方ありがとうございました。2019/01/19
+⇒Tthank you, I got the e-mail from mr.GEPPI.
 ～～
 
 操作方法(controls keyboard or PS-joypad)
